@@ -53,6 +53,143 @@ Sertakan screenshot hasil percobaan atau diagram:
 - Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).  
 - Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?  
 
+1. Makna hasil percobaan
+a. uname -a
+
+Menampilkan informasi kernel dan sistem operasi:
+
+Linux LAPTOP-F8F6U5EV 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun 5 18:30:46 UTC 2025 x86_64 GNU/Linux
+
+
+ Makna:
+
+Sistem operasi: Linux
+
+Kernel: versi 6.6.87.2-microsoft-standard-WSL2 (berarti dijalankan di Windows Subsystem for Linux versi 2)
+
+Arsitektur: x86_64 (64-bit)
+
+PREEMPT_DYNAMIC: kernel mendukung preemption dinamis (memungkinkan penjadwalan thread real-time lebih responsif).
+
+b. lsmod | head
+
+Menampilkan daftar modul kernel (driver) yang sedang aktif:
+
+tls, intel_rapl_msr, intel_rapl_common, kvm_intel, kvm, irqbypass, ...
+
+
+ Makna:
+
+kvm_intel & kvm: kernel module untuk virtualisasi (KVM = Kernel-based Virtual Machine).
+
+intel_rapl_*: pengaturan power management untuk CPU Intel.
+
+tls: mendukung Thread Local Storage, fitur sinkronisasi thread di kernel.
+
+Ini menunjukkan kernel di WSL2 tetap memuat modul yang mirip dengan kernel Linux biasa (meski dijalankan di atas Windows).
+
+c. dmesg | head
+
+Menampilkan log awal kernel (boot message):
+
+Linux version 6.6.87.2-microsoft-standard-WSL2 ...
+Command line: ... WSL_ROOT_INIT=1 ...
+KERNEL supported cpus: Intel GenuineIntel, AMD AuthenticAMD
+
+
+ Makna:
+
+Kernel yang digunakan berasal dari Microsoft WSL2 (bukan kernel Linux murni, tapi modifikasi dari Microsoft).
+
+Ada parameter WSL_ROOT_INIT → kernel ini disesuaikan agar bisa berjalan tanpa BIOS/bootloader tradisional, karena WSL2 dijalankan sebagai virtual machine ringan di atas Windows.
+
+nr_cpus=12 → kernel mendeteksi 12 logical CPU.
+
+Bagian “BIOS-e820” menunjukkan peta memori (RAM map) yang diinisialisasi kernel.
+. Fungsi Kernel dan Kaitannya dengan Hasil
+
+2. Hasil Teori
+Kernel adalah inti dari sistem operasi yang bertugas mengatur sumber daya komputer (CPU, memori, perangkat I/O) dan menyediakan layanan dasar bagi aplikasi.
+Fungsi utama kernel meliputi:
+
+Manajemen proses (penjadwalan, pembuatan, dan penghentian proses)
+
+Manajemen memori (alokasi dan proteksi memori)
+
+Manajemen perangkat keras (melalui driver)
+
+Manajemen file system
+
+Menjembatani komunikasi antara user space dan hardware
+
+🔹 Kaitannya dengan hasil percobaan:
+
+Perintah uname -a menampilkan versi dan tipe kernel yang digunakan:
+
+Linux 6.6.87.2-microsoft-standard-WSL2 ...
+Ini membuktikan bahwa kernel aktif di sistem kamu adalah Linux kernel yang telah dimodifikasi Microsoft untuk WSL2.
+
+Perintah lsmod menunjukkan daftar modul kernel (driver) yang dimuat seperti kvm_intel, tls, ac.
+→ Ini menggambarkan fungsi kernel dalam manajemen perangkat keras. Modul-modul tersebut berfungsi seperti “plugin” yang membuat kernel dapat berinteraksi dengan CPU dan perangkat lainnya.
+
+Perintah dmesg menampilkan log kernel saat proses inisialisasi sistem.
+→ Ini menunjukkan bagaimana kernel bekerja sejak awal boot untuk mengatur memori, CPU, dan sistem virtualisasi.
+
+Intinya: hasil percobaan menggambarkan peran kernel sebagai “otak” OS yang menginisialisasi, mengatur, dan mengendalikan seluruh komponen sistem.
+
+ 2. System Call dan Kaitannya dengan Hasil
+
+🔹 Teori:
+System call adalah antarmuka antara program di user space dan kernel space.
+Program biasa tidak bisa langsung mengakses perangkat keras, sehingga mereka harus memanggil system call agar kernel yang melakukannya.
+
+Contoh system call di Linux:
+open(), read(), write(), fork(), execve(), ioctl(), dll.
+
+🔹 Kaitannya dengan hasil percobaan:
+
+Saat kamu mengetik perintah seperti lsmod atau dmesg, shell (bash) memanggil beberapa system call:
+
+open() → membuka file di /proc/modules (untuk menampilkan modul kernel)
+
+read() → membaca isi file sistem kernel
+
+write() dan printf() → menampilkan hasil ke layar
+
+Kernel menjawab permintaan itu dan mengembalikan data ke program di user space.
+Jadi perintah-perintah ini adalah contoh nyata penggunaan system call untuk berinteraksi dengan kernel.
+
+Intinya: hasil percobaan membuktikan bahwa komunikasi antara user space (bash/terminal) dan kernel (Linux di WSL2) berjalan melalui system call interface.
+
+ 3. Arsitektur Sistem Operasi dan Kaitannya dengan Hasil
+
+🔹 Teori:
+Arsitektur OS modern biasanya dibagi dua bagian besar:
+
+User Space: tempat program dan aplikasi berjalan.
+
+Kernel Space: tempat kernel bekerja (melindungi hardware dan sumber daya sistem).
+
+Jenis arsitektur kernel:
+
+Monolithic kernel (seperti Linux): semua fungsi inti (driver, manajemen proses, sistem file) dijalankan di satu ruang kernel.
+
+Microkernel: hanya fungsi minimal di kernel; layanan lainnya di user space.
+
+🔹 Kaitannya dengan hasil:
+Kernel yang digunakan (6.6.87.2-microsoft-standard-WSL2) berbasis Linux monolithic kernel, sehingga seluruh modul (kvm_intel, irqbypass, dll) bekerja langsung di ruang kernel.Namun, karena dijalankan di WSL2, kernel Linux ini berjalan di atas Hyper-V (virtualisasi Windows).
+
+3.Perbedaan Linux dan Windows
+Perbedaan utama antara Linux dan Windows yang memengaruhi hasil:
+
+Arsitektur dan Kernel: Linux adalah open-source dan Unix-like, sedangkan Windows adalah proprietary dari Microsoft. Ini memengaruhi bagaimana sistem menangani proses, file, dan keamanan.
+File System: Linux menggunakan case-sensitive file systems (seperti ext4), sedangkan Windows biasanya case-insensitive (NTFS). Ini bisa mengubah bagaimana program menangani nama file.
+Path dan Direktori: Di Linux, path dimulai dengan '/', dan menggunakan '/' sebagai pemisah. Di Windows, path dimulai dengan drive letter seperti 'C:', dan menggunakan '' sebagai pemisah.
+Eksekusi Program: Eksekusi file .exe di Windows versus file executable di Linux (tanpa ekstensi). Skrip shell seperti bash di Linux vs batch atau PowerShell di Windows.
+Dependensi dan Library: Linux sering menggunakan shared libraries (.so), sedangkan Windows menggunakan DLL. Ini bisa menyebabkan masalah kompatibilitas.
+Lingkungan Pengguna: Variabel lingkungan, hak akses, dan perilaku default berbeda.
+Output dan Debugging: Output dari perintah atau program mungkin berbeda karena perbedaan dalam shell atau interpreter.
+
 ---
 
 ## Kesimpulan
