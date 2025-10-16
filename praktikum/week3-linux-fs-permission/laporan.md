@@ -62,11 +62,11 @@ Tuliskan 2–3 poin kesimpulan dari praktikum ini.
 ---
 
 ## Quiz
-1. [Pertanyaan 1]  
+1. Apa fungsi dari perintah chmod?
+   **Jawaban:** Fungsi chmod ialah untuk mengubah mode akses atau izin pada berkas dan direktori di sistem operasi mirip Unix seperti Linux. 
+2. Apa arti dari kode permission rwxr-xr--?
    **Jawaban:**  
-2. [Pertanyaan 2]  
-   **Jawaban:**  
-3. [Pertanyaan 3]  
+3. Jelaskan perbedaan antara chown dan chmod.
    **Jawaban:**  
 
 ---
