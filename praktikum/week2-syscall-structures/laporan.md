@@ -7,7 +7,7 @@ Topik: Struktur System Call dan Fungsi Kernel
 ## Identitas
 - **Nama**  : Rizki fadil mubarok  
 - **NIM**   : 250202925
-- **Kelas** : 1KRA
+- **Kelas** : 1IKRA
 
 ---
 
