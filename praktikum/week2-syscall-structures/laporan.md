@@ -52,9 +52,13 @@ Sertakan screenshot hasil percobaan atau diagram:
 ---
 
 ## Analisis
-- Jelaskan makna hasil percobaan.  
-- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).  
-- Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?  
+- Jelaskan makna hasil percobaan.
+    Pemahaman bahwa sistem call adalah hubungan antara program pengguna (user mode) dan kernel (kernel mode), \yang digunakan untuk meminta layanan dari sistem         operasi (seperti manajemen memori atau akses perangkat keras Hardware))
+- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS.
+    Teori arsitektur OS menjelaskan bahwa kernel ialah inti yang mengelola perangkat keras,sedangkan system call adalah mekanisme yang memungkinkan aplikasi mode       pengguna meminta layanan dari kernel. Secara sederhana, aplikasi (mode pengguna) menggunakan system call untuk meminta kernel (mode kernel) melakukan tugas,        seperti membaca dari berkas atau mengelola proses, jadi kernel dapat mengelola sumber daya sistem secara aman.  
+- Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?
+  Linux:   Dikenal lebih ringan dan efisien,dapat berjalan lebih cepat pada perangkat keras yang lebih lama atau dengan spesifikasi rendah.
+  Windows: Cenderung lebih berat karena banyak fitur bawaan dan membutuhkan sumber daya lebih besar. Performanya bisa melambat seiring waktu, terutama pada                    perangkat keras yang lebih tua. 
 
 ---
 
