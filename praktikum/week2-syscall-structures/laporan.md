@@ -57,6 +57,25 @@ Sertakan screenshot hasil percobaan atau diagram:
 - Analisis bagaimana file dibuka, dibaca, dan ditutup oleh kernel.
 - Amati log kernel yang muncul. Apa bedanya output ini dengan output dari program biasa?
 
+a. open()
+Kernel pertama kali menerima system call:
+-cat meminta kernel membuka file /etc/passwd hanya untuk dibaca (O_RDONLY).
+-Kernel memeriksa izin akses (permission) dan memastikan pengguna memiliki hak untuk membaca file tersebut.
+-Jika sukses, kernel mengembalikan file descriptor bernilai 3, yang menjadi “pegangan” program untuk mengakses file di memori kernel.
+b. read()
+Baris berikut menunjukkan pemanggilan read() berkali-kali:
+Artinya:
+-cat meminta kernel membaca isi file sebanyak 4096 byte.
+-Kernel membaca data dari disk ke buffer kernel, kemudian menyalurkannya ke buffer ruang user milik cat.
+-Nilai 2996 menunjukkan bahwa hanya 2996 byte berhasil dibaca (artinya file lebih kecil dari 4 KB).
+c. write()
+Baris berikut muncul:
+cat menulis hasil pembacaan ke file descriptor 1, yaitu stdout (layar terminal).
+Kernel memastikan data dikirim ke perangkat output dengan benar.
+d. close()
+Akhirnya muncul:
+Setelah selesai membaca, program cat menutup file dengan close().
+Kernel melepaskan semua resource: file descriptor, buffer, dan entry di tabel file kernel.
   
 ---
 
