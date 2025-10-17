@@ -38,28 +38,26 @@ Tuliskan ringkasan teori (3–5 poin) yang mendasari percobaan.
 ## Kode / Perintah
 Tuliskan potongan kode atau perintah utama:
 ```bash
-uname -a
-lsmod | head
-dmesg | head
+strace ls
+strace -e trace=open,read,write,close cat /etc/passwd
+dmesg | tail -n 10
 ```
 
 ---
 
 ## Hasil Eksekusi
 Sertakan screenshot hasil percobaan atau diagram:
-
+<img width="1919" height="1079" alt="Screenshot 2025-10-17 131138" src="https://github.com/user-attachments/assets/2d5acd61-5735-46ed-b9e8-6ca1fbf71880" />
+<img width="1919" height="1079" alt="Screenshot 2025-10-17 131149" src="https://github.com/user-attachments/assets/2470454c-6539-41eb-a3e1-1eeac86942fc" />
+<img width="1919" height="1079" alt="Screenshot 2025-10-17 131241" src="https://github.com/user-attachments/assets/aae20fe2-f205-46cb-810e-4eb53ce6c384" />
 
 ---
 
 ## Analisis
-- Jelaskan makna hasil percobaan.
-    Pemahaman bahwa sistem call adalah hubungan antara program pengguna (user mode) dan kernel (kernel mode), \yang digunakan untuk meminta layanan dari sistem         operasi (seperti manajemen memori atau akses perangkat keras Hardware))
-- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS.
-    Teori arsitektur OS menjelaskan bahwa kernel ialah inti yang mengelola perangkat keras,sedangkan system call adalah mekanisme yang memungkinkan aplikasi mode       pengguna meminta layanan dari kernel. Secara sederhana, aplikasi (mode pengguna) menggunakan system call untuk meminta kernel (mode kernel) melakukan tugas,        seperti membaca dari berkas atau mengelola proses, jadi kernel dapat mengelola sumber daya sistem secara aman.  
-- Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?
-  Linux:   Dikenal lebih ringan dan efisien,dapat berjalan lebih cepat pada perangkat keras yang lebih lama atau dengan spesifikasi rendah.
-  Windows: Cenderung lebih berat karena banyak fitur bawaan dan membutuhkan sumber daya lebih besar. Performanya bisa melambat seiring waktu, terutama pada                    perangkat keras yang lebih tua. 
+- Analisis bagaimana file dibuka, dibaca, dan ditutup oleh kernel.
+- Amati log kernel yang muncul. Apa bedanya output ini dengan output dari program biasa?
 
+  
 ---
 
 ## Kesimpulan
