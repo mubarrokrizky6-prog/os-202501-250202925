@@ -75,8 +75,31 @@ Kernel memastikan data dikirim ke perangkat output dengan benar.
 d. close()
 Akhirnya muncul:
 Setelah selesai membaca, program cat menutup file dengan close().
-Kernel melepaskan semua resource: file descriptor, buffer, dan entry di tabel file kernel.
-  
+Kernel melepaskan semua resource: file descriptor, buffer, dan entry di tabel file kernel
+
+1. Konteks Eksperimen
+menghasilkan dua lapisan output berbeda:
+Output program biasa (cat /etc/passwd) → yaitu isi file /etc/passwd yang tampil di layar.
+Output strace → yaitu log system call (aktivitas yang dilakukan kernel di balik layar).
+2. Makna Log Kernel (Output strace)
+Log dari strace bukan hasil program itu sendiri, melainkan hasil pemantauan aktivitas komunikasi antara aplikasi dan kernel.
+Contohnya:
+Artinya:
+cat memanggil fungsi (system call) yang disediakan kernel.
+Kernel kemudian menangani akses file, membaca isi, dan menyalurkannya ke layar.
+strace hanya mengintip dan menampilkan log proses internal ini.
+3. Makna Output Program Biasa
+ output program biasa adalah hasil logis dari instruksi yang dijalankan oleh aplikasi dalam user mode.
+Ini bukan aktivitas kernel, melainkan hasil akhir dari proses I/O setelah kernel menyalurkan data ke program cat.
+Aplikasi cat hanya menampilkan isi file yang dibacanya dari kernel, tanpa tahu detail bagaimana kernel membukanya.
+4. Perbedaan 
+| Aspek       | `dmesg` (Log Kernel)                | Program biasa (contoh `cat`)            |
+| ----------- | ----------------------------------- | --------------------------------------- |
+| Sumber data | Kernel buffer (memori kernel)       | File sistem (user data)                 |
+| Isi output  | Status, error, hardware, driver     | Konten file, hasil proses               |
+| Mode utama  | Kernel mode (melalui system call)   | User mode                               |
+| Tujuan      | Debugging sistem, monitoring kernel | Menampilkan data / menjalankan aplikasi |
+
 ---
 
 ## Kesimpulan
@@ -99,7 +122,7 @@ Tuliskan 2–3 poin kesimpulan dari praktikum ini.
 
 ## Refleksi Diri
 Tuliskan secara singkat:
-- Apa bagian yang paling menantang minggu ini?  masih bingung cara mengerjakannya ;)
+- Apa bagian yang paling menantang minggu ini?  masih bingung cara mengerjakannya 
 - Bagaimana cara Anda mengatasinya?  melihat tutorial di sosmed atau minta bantuan teman untuk mengajarinya
 
 ---
