@@ -109,6 +109,37 @@ Tuliskan 2–3 poin kesimpulan dari praktikum ini.
 3. Praktikum menunjukkan bagaimana kernel dan system call bekerja sama dalam menjalankan aplikasi,memastikan aplikasi dapat berinteraksi dengan perangkat keras secara aman dan efisien.  
 
 ---
+## Tugas
+1. Dokumentasikan hasil eksperimen strace dan dmesg dalam bentuk tabel observasi.
+- strace
+
+| **No** | **Pesan Kernel (dmesg)** | **Makna / Penjelasan** | **Kategori Aktivitas Kernel** |
+| ------ | ------------------------ | :--------------------- | :---------------------------- |
+| 1 | `systemd-journald[43]: Collecting audit messages is disabled.` | Kernel mencatat bahwa fitur *audit logging* tidak diaktifkan. Ini berarti pesan audit sistem tidak sedang dikumpulkan. | Logging / Audit |
+| 2 | `systemd-journald[43]: Received client request to flush runtime journal.` | Kernel menerima permintaan dari `systemd-journald` untuk menyimpan log runtime ke disk. | Manajemen Log Sistem |
+| 3 | `systemd-journald[43]: File /var/log/journal/.../system.journal corrupted or uncleanly shut down, renaming and replacing.` | Kernel mendeteksi file jurnal yang rusak akibat shutdown tidak bersih, lalu menggantinya dengan file baru. | File System / Recovery |
+| 4 | `ACPI: AC Adapter [AC1] (off-line)` | Kernel mendeteksi bahwa adaptor daya (charger) sedang tidak terhubung. | Power Management  |
+| 5 | `ACPI: battery: Slot [BAT1] (battery present)` | Kernel mengenali adanya baterai yang aktif dan terpasang di sistem. | Power Management |
+| 6 | `kvm_intel: Using Hyper-V Enlightened VMCS` | Kernel memuat modul `kvm_intel` untuk virtualisasi, menandakan sistem berjalan di lingkungan virtual (misalnya WSL atau Hyper-V). | Virtualization / CPU Management |
+| 7 | `intel_rapl_ms: PL4 support detected.` | Kernel mendeteksi dukungan untuk fitur *Power Limit 4* pada prosesor Intel (pengaturan batas konsumsi daya). | CPU / Power Control |
+| 8 | `systemd-journald[43]: /var/log/journal/.../user-1000.journal: Journal file uses a different sequence number ID, rotating.` | Kernel menandakan rotasi file log karena ID urutan log berbeda. Ini mekanisme keamanan agar log tidak rusak | Log Rotation / Maintenance |
+| 9 | `WSL (239) ERROR: CheckConnection: getaddrinfo() failed: -5` | Pesan kesalahan dari lingkungan WSL (Windows Subsystem for Linux). Menunjukkan kegagalan dalam melakukan resolusi alamat jaringan.  | Networking / Virtual Environment |
+| 10 | `TCP: eth0: Driver has suspect GRO implementation, TCP performance may be compromised.` | Kernel memberi peringatan bahwa driver jaringan `eth0` memiliki implementasi *Generic Receive Offload (GRO)* yang bermasalah, berpotensi menurunkan performa TCP. | Networking / Driver |
+
+- dmesg
+
+| **No** | **Pesan Kernel (dmesg)**                                                                                                    | **Makna / Penjelasan**                                                                                                                                            | **Kategori Aktivitas Kernel**    |
+| :----: | :-------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------- |
+|    1   | `systemd-journald[43]: Collecting audit messages is disabled.`                                                              | Kernel mencatat bahwa fitur *audit logging* tidak diaktifkan. Ini berarti pesan audit sistem tidak sedang dikumpulkan.                                            | Logging / Audit                  |
+|    2   | `systemd-journald[43]: Received client request to flush runtime journal.`                                                   | Kernel menerima permintaan dari `systemd-journald` untuk menyimpan log runtime ke disk.                                                                           | Manajemen Log Sistem             |
+|    3   | `systemd-journald[43]: File /var/log/journal/.../system.journal corrupted or uncleanly shut down, renaming and replacing.`  | Kernel mendeteksi file jurnal yang rusak akibat shutdown tidak bersih, lalu menggantinya dengan file baru.                                                        | File System / Recovery           |
+|    4   | `ACPI: AC Adapter [AC1] (off-line)`                                                                                         | Kernel mendeteksi bahwa adaptor daya (charger) sedang tidak terhubung.                                                                                            | Power Management                 |
+|    5   | `ACPI: battery: Slot [BAT1] (battery present)`                                                                              | Kernel mengenali adanya baterai yang aktif dan terpasang di sistem.                                                                                               | Power Management                 |
+|    6   | `kvm_intel: Using Hyper-V Enlightened VMCS`                                                                                 | Kernel memuat modul `kvm_intel` untuk virtualisasi, menandakan sistem berjalan di lingkungan virtual (misalnya WSL atau Hyper-V).                                 | Virtualization / CPU Management  |
+|    7   | `intel_rapl_ms: PL4 support detected.`                                                                                      | Kernel mendeteksi dukungan untuk fitur *Power Limit 4* pada prosesor Intel (pengaturan batas konsumsi daya).                                                      | CPU / Power Control              |
+|    8   | `systemd-journald[43]: /var/log/journal/.../user-1000.journal: Journal file uses a different sequence number ID, rotating.` | Kernel menandakan rotasi file log karena ID urutan log berbeda. Ini mekanisme keamanan agar log tidak rusak.                                                      | Log Rotation / Maintenance       |
+|    9   | `WSL (239) ERROR: CheckConnection: getaddrinfo() failed: -5`                                                                | Pesan kesalahan dari lingkungan WSL (Windows Subsystem for Linux). Menunjukkan kegagalan dalam melakukan resolusi alamat jaringan.                                | Networking / Virtual Environment |
+|   10   | `TCP: eth0: Driver has suspect GRO implementation, TCP performance may be compromised.`                                     | Kernel memberi peringatan bahwa driver jaringan `eth0` memiliki implementasi *Generic Receive Offload (GRO)* yang bermasalah, berpotensi menurunkan performa TCP. | Networking / Driver              |
 
 ## Quiz
 1. Apa fungsi utama system call dalam sistem operasi?
