@@ -58,6 +58,10 @@ Sertakan screenshot hasil percobaan atau diagram:
 
 ## Kesimpulan
 Tuliskan 2–3 poin kesimpulan dari praktikum ini.
+Kesimpulan praktikum Manajemen File dan Permission di Linux adalah:
+(1) Terdapat tiga jenis hak akses dasar untuk file/direktori: read (baca), write (tulis), dan execute (eksekusi).
+(2) Hak akses ini dibagi menjadi tiga kategori pemilik: owner (pemilik), group (kelompok), dan other (lainnya). 
+(3) Perintah chmod digunakan untuk mengubah hak akses file, yang dapat dilakukan menggunakan notasi simbolik (misalnya, u+r) atau notasi oktal (misalnya, 755). 
 
 ---
 
@@ -67,7 +71,7 @@ Tuliskan 2–3 poin kesimpulan dari praktikum ini.
 2. Apa arti dari kode permission rwxr-xr--?
    **Jawaban:**  
 3. Jelaskan perbedaan antara chown dan chmod.
-   **Jawaban:**  
+   **Jawaban:** Perbedaannya ialah chmod mengubah izin (mode) file atau direktori (siapa yang dapat membaca,menulis,atau mengeksekusi),sedangkan chown mengubah kepemilikan file atau direktori (siapa pemiliknya dan grup pemiliknya). chmod adalah singkatan dari "change mode",sedangkan chown adalah singkatan dari "change owner".  
 
 ---
 
