@@ -26,6 +26,13 @@ Mahasiswa mampu :
 
 ## Dasar Teori
 Tuliskan ringkasan teori (3–5 poin) yang mendasari percobaan.
+-Linux memakai sistem berkas hierarki dengan root / sebagai pusatnya.
+-Setiap file punya izin read (r), write (w), dan execute (x) untuk owner, group, dan others.
+-Manajemen file dilakukan dengan perintah seperti ls, cp, mv, rm, dan mkdir.
+-Izin dan kepemilikan diatur dengan chmod, chown, dan chgrp.
+-Permission berfungsi menjaga keamanan dan membatasi akses pengguna.
+
+
 
 ---
 
@@ -54,10 +61,12 @@ Sertakan screenshot hasil percobaan atau diagram:
 ---
 
 ## Analisis
-- Jelaskan makna hasil percobaan.  
-- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).  
-- Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?  
-
+- Jelaskan makna hasil percobaan.
+    Hasil percobaan menunjukkan bahwa Linux mengatur file dengan izin akses tertentu untuk menjaga            keamanan, dan izin serta kepemilikan file dapat diubah menggunakan perintah seperti chmod, chown,         dan chgrp. 
+- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).
+     Hasil percobaan berkaitan dengan teori karena kernel mengatur akses file melalui system call             seperti open(), read(), write(), dan chmod(). Saat pengguna menjalankan perintah manajemen file, OS      melalui kernel memeriksa izin (permission) sesuai arsitektur Linux yang memisahkan user mode dan         kernel mode, sehingga keamanan dan kontrol akses file tetap terjaga.
+-    Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?  
+     Perbedaannya, di Linux manajemen file dan permission diatur dengan sistem rwx (read, write,              execute) dan berbasis user–group–others, sedangkan di Windows menggunakan ACL (Access Control List)      yang lebih detail dan berbasis user account. Selain itu, Linux mengatur izin lewat command line dan      kernel,    sedangkan Windows lebih banyak melalui GUI (grafis).
 ---
 
 ## Kesimpulan
@@ -81,8 +90,8 @@ Kesimpulan praktikum Manajemen File dan Permission di Linux adalah:
 
 ## Refleksi Diri
 Tuliskan secara singkat:
-- Apa bagian yang paling menantang minggu ini?  
-- Bagaimana cara Anda mengatasinya?  
+- Apa bagian yang paling menantang minggu ini? belum paham materi  
+- Bagaimana cara Anda mengatasinya? Berusaha dan belajar giat, pahami konsepnya
 
 ---
 
