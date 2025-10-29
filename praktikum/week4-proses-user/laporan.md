@@ -1,6 +1,6 @@
 
-# Laporan Praktikum Minggu [X]
-Topik: Tuliskan 2–3 poin kesimpulan dari praktikum ini.
+# Laporan Praktikum Minggu 4
+Topik: Manajemen Proses dan User di Linux
 
 
 
@@ -62,9 +62,14 @@ Sertakan screenshot hasil percobaan atau diagram:
 ---
 
 ## Analisis
-- Jelaskan makna hasil percobaan.  
-- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).  
-- Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?  
+- Jelaskan makna hasil percobaan.
+ Hasil percobaan menunjukkan bahwa Linux mampu mengelola proses dan pengguna dengan baik melalui perintah sistem. Setiap proses dikendalikan oleh kernel,           sedangkan pengaturan user dan hak akses menunjukkan penerapan keamanan dan manajemen sumber daya sesuai teori sistem operasi. 
+- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).
+Hasil percobaan sesuai dengan teori bahwa kernel berfungsi sebagai pengendali utama proses dan user di sistem operasi. Saat perintah dijalankan, Linux menggunakan system call untuk berkomunikasi antara program (user space) dan kernel (kernel space). Hal ini menunjukkan bahwa arsitektur OS bekerja secara berlapis — pengguna memberi perintah melalui shell, kernel memprosesnya, lalu hasil dikembalikan ke pengguna. percobaan membuktikan peran kernel dan system call dalam mengatur proses, hak akses, serta sumber daya sistem.
+
+- Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?
+Pada Linux, manajemen proses dan user dilakukan melalui perintah terminal dan berbasis hak akses (root dan user biasa), sedangkan Windowslebih banyak menggunakan antarmuka grafis dan akun administrator. Linux menampilkan detail proses dengan perintah seperti `ps`, `top`, atau `kill`, sedangkan Windows menggunakan Task Manager atau perintah `tasklist`. Selain itu, Linux lebih transparan terhadap system call dan struktur kernel, sedangkan Windows menyembunyikan banyak proses sistem demi keamanan dan kemudahan pengguna.
+
 
 ---
 
@@ -80,10 +85,13 @@ Tuliskan 2–3 poin kesimpulan dari praktikum ini.
 ## Quiz
 1. Apa fungsi dari proses init atau systemd dalam sistem Linux?  
    **Jawaban:**  init atau systemd berfungsi sebagai pengendali utama proses dan layanan di Linux, yang memastikan sistem dapat berjalan dan dikelola dengan benar sejak awal booting.
-2. 
-   **Jawaban:**  
-3. Mengapa user root memiliki hak istimewa di sistem Linux? 
-   **Jawaban:**  
+2. Apa perbedaan antara kill dan killall?
+   **Jawaban:**
+   -kill digunakan jika kamu tahu PID proses yang ingin dihentikan.
+   -killall digunakan jika kamu tahu nama programnya, bukan PID-nya.
+   -kill menghentikan satu proses berdasarkan PID, sedangkan killall menghentikan semua proses dengan nama tertentu.
+4. Mengapa user root memiliki hak istimewa di sistem Linux? 
+   **Jawaban:**  User root memiliki hak istimewa karena berperan sebagai pengelola utama sistem Linux, yang bertanggung jawab atas pengaturan, keamanan, dan pemeliharaan seluruh sistem.
 
 ---
 
