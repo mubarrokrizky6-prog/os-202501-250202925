@@ -1,4 +1,4 @@
-![WhatsApp Image 2025-10-29 at 11 08 08](https://github.com/user-attachments/assets/ec612d69-b873-47c6-a326-81c8b191bc5f)
+
 # Laporan Praktikum Minggu 4
 Topik: Manajemen Proses dan User di Linux
 
@@ -26,6 +26,17 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
 
 ## Dasar Teori
 Tuliskan ringkasan teori (3–5 poin) yang mendasari peoses user
+
+
+1. Linux adalah sistem multiuser, artinya banyak pengguna dapat masuk dan bekerja secara bersamaan tanpa saling mengganggu. Setiap user memiliki identitas unik yang disebut UID (User ID).
+
+2. Sistem menyimpan data pengguna dan grup pada file seperti `/etc/passwd`, `/etc/shadow`, dan `/etc/group` untuk mengatur identitas, kata sandi, dan keanggotaan user.
+
+3. Hak akses file dan direktori diatur dengan sistem permission (read, write, execute) agar keamanan dan privasi antar pengguna tetap terjaga.
+
+4. User root berfungsi sebagai superuser yang memiliki hak penuh untuk mengatur sistem, mengelola user lain, serta melakukan instalasi dan konfigurasi sistem.
+
+5. Saat login, sistem akan memverifikasi identitas user, kemudian memberikan shell (seperti bash) sebagai antarmuka untuk menjalankan perintah di sistem operasi.
 
 
 ---
@@ -192,6 +203,10 @@ Identifikasi proses induk (init/systemd):
 ## Kesimpulan
 Tuliskan 2–3 poin kesimpulan dari praktikum proses user
 
+1. Sistem Linux memiliki mekanisme manajemen user yang terstruktur, sehingga setiap pengguna memiliki identitas dan hak akses yang berbeda sesuai kebutuhan.
+2. User root memiliki peran penting sebagai pengelola utama sistem dengan hak istimewa penuh untuk melakukan konfigurasi dan administrasi.
+3. Pengaturan hak akses dan grup pengguna sangat penting untuk menjaga keamanan serta mencegah penyalahgunaan sumber daya sistem.
+
 
 ---
 
@@ -259,15 +274,24 @@ Tuliskan jawaban di bagian **Quiz** pada laporan:
 
 
 **JAWABAN**
+1. init atau systemd adalah proses pertama dan inti dari sistem Linux yang:
+-Dijalankan oleh kernel saat booting,
+-Menginisialisasi dan menjalankan seluruh layanan sistem,
+-Menjadi induk bagi semua proses lain (PID 1),
+-Menjaga kestabilan, ketertiban, dan kelancaran operasi sistem.
 
+2. Gunakan kill jika kamu ingin menghentikan proses tertentu yang sudah kamu ketahui PID-nya, dan gunakan killall jika ingin menghentikan semua proses dengan nama    yang sama sekaligus.
+
+3. User root adalah pengelola utama sistem dengan akses tanpa batas agar bisa melakukan konfigurasi, pemeliharaan, dan perbaikan sistem. Hak istimewa ini diberikan untuk menjamin stabilitas dan keamanan sistem operasi Linux, selama digunakan secara hati-hati.
 
 ---
 
 ## Refleksi Diri
 Tuliskan secara singkat:
-- Apa bagian yang paling menantang minggu ini?  
+- Apa bagian yang paling menantang minggu ini?
+kesusahan
 - Bagaimana cara Anda mengatasinya?  
-
+Berdoa dan berusaha
 ---
 
 **Credit:**  
