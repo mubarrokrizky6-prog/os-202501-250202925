@@ -105,14 +105,15 @@ Tuliskan ringkasan teori (3–5 poin) yang mendasari peoses user
 ---
 
 ## Hasil Eksekusi
-Sertakan screenshot hasil percobaan atau diagram:
-![Screenshot hasil](screenshots/example.png)
+
 
 ---
 
 ## Analisis
-
-
+- Eksperimen 1 : - Jelaskan setiap output dan fungsinya. (whoami,id,groups0
+- eksperimen 2 : - Jelaskan kolom penting seperti PID, USER, %CPU, %MEM, COMMAND. 
+- eksperimen 3 : - Catat PID proses `sleep`. 
+- eksperimen 4 : - Amati hierarki proses dan identifikasi proses induk (`init`/`systemd`).  
 
 ---
 
