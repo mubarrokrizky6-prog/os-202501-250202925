@@ -15,25 +15,18 @@ Topik: Manajemen Proses dan User di Linux
 ---
 
 ## Tujuan
-Tuliskan tujuan praktikum minggu ini.  
-mahasiswa mampu :
--Menjelaskan konsep proses dan user dalam sistem operasi Linux.
--Menampilkan daftar proses yang sedang berjalan dan statusnya.
--Menggunakan perintah untuk membuat dan mengelola user.
--Menghentikan atau mengontrol proses tertentu menggunakan PID.
--Menjelaskan kaitan antara manajemen user dan keamanan sistem.
-
-
+Setelah menyelesaikan tugas ini, mahasiswa mampu:
+1. Menjelaskan konsep proses dan user dalam sistem operasi Linux.  
+2. Menampilkan daftar proses yang sedang berjalan dan statusnya.  
+3. Menggunakan perintah untuk membuat dan mengelola user.  
+4. Menghentikan atau mengontrol proses tertentu menggunakan PID.  
+5. Menjelaskan kaitan antara manajemen user dan keamanan sistem.  
 
 ---
 
 ## Dasar Teori
-Tuliskan ringkasan teori (3–5 poin) yang mendasari percobaan.
-a. Proses adalah program yang sedang dieksekusi dan dikelola oleh kernel melalui PID.
-b. Kernel bertugas membuat, menjalankan, menjadwalkan, dan menghentikan proses dengan bantuan system call.
-c.Linux bersifat multiuser, maksudnya banyak pengguna dapat mengakses sistem secara bersamaan dengan hak akses berbeda.
-d. User dan grup memiliki UID dan GID untuk mengatur izin terhadap file, proses, dan sumber daya sistem.
-e.System call menjadi penghubung antara perintah user dengan pengelolaan proses dan user di tingkat kernel.
+Tuliskan ringkasan teori (3–5 poin) yang mendasari peoses user
+
 
 ---
 
@@ -46,12 +39,68 @@ e.System call menjadi penghubung antara perintah user dengan pengelolaan proses 
 ---
 
 ## Kode / Perintah
-Tuliskan potongan kode atau perintah utama:
-```bash
-uname -a
-lsmod | head
-dmesg | head
-```
+1. **Setup Environment**
+   - Gunakan Linux (Ubuntu/WSL).  
+   - Pastikan Anda sudah login sebagai user non-root.  
+   - Siapkan folder kerja:
+     ```
+     praktikum/week4-proses-user/
+     ```
+
+2. **Eksperimen 1 – Identitas User**
+   Jalankan perintah berikut:
+   ```bash
+   whoami
+   id
+   groups
+   ```
+   - Jelaskan setiap output dan fungsinya.  
+   - Buat user baru (jika memiliki izin sudo):
+     ```bash
+     sudo adduser praktikan
+     sudo passwd praktikan
+     ```
+   - Uji login ke user baru.
+
+3. **Eksperimen 2 – Monitoring Proses**
+   Jalankan:
+   ```bash
+   ps aux | head -10
+   top -n 1
+   ```
+   - Jelaskan kolom penting seperti PID, USER, %CPU, %MEM, COMMAND.  
+   - Simpan tangkapan layar `top` ke:
+     ```
+     praktikum/week4-proses-user/screenshots/top.png
+     ```
+
+4. **Eksperimen 3 – Kontrol Proses**
+   - Jalankan program latar belakang:
+     ```bash
+     sleep 1000 &
+     ps aux | grep sleep
+     ```
+   - Catat PID proses `sleep`.  
+   - Hentikan proses:
+     ```bash
+     kill <PID>
+     ```
+   - Pastikan proses telah berhenti dengan `ps aux | grep sleep`.
+
+5. **Eksperimen 4 – Analisis Hierarki Proses**
+   Jalankan:
+   ```bash
+   pstree -p | head -20
+   ```
+   - Amati hierarki proses dan identifikasi proses induk (`init`/`systemd`).  
+   - Catat hasilnya dalam laporan.
+
+6. **Commit & Push**
+   ```bash
+   git add .
+   git commit -m "Minggu 4 - Manajemen Proses & User"
+   git push origin main
+   ```
 
 ---
 
@@ -62,36 +111,30 @@ Sertakan screenshot hasil percobaan atau diagram:
 ---
 
 ## Analisis
-- Jelaskan makna hasil percobaan.
- Hasil percobaan menunjukkan bahwa Linux mampu mengelola proses dan pengguna dengan baik melalui perintah sistem. Setiap proses dikendalikan oleh kernel,           sedangkan pengaturan user dan hak akses menunjukkan penerapan keamanan dan manajemen sumber daya sesuai teori sistem operasi. 
-- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).
-Hasil percobaan sesuai dengan teori bahwa kernel berfungsi sebagai pengendali utama proses dan user di sistem operasi. Saat perintah dijalankan, Linux menggunakan system call untuk berkomunikasi antara program (user space) dan kernel (kernel space). Hal ini menunjukkan bahwa arsitektur OS bekerja secara berlapis — pengguna memberi perintah melalui shell, kernel memprosesnya, lalu hasil dikembalikan ke pengguna. percobaan membuktikan peran kernel dan system call dalam mengatur proses, hak akses, serta sumber daya sistem.
 
-- Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?
-Pada Linux, manajemen proses dan user dilakukan melalui perintah terminal dan berbasis hak akses (root dan user biasa), sedangkan Windowslebih banyak menggunakan antarmuka grafis dan akun administrator. Linux menampilkan detail proses dengan perintah seperti `ps`, `top`, atau `kill`, sedangkan Windows menggunakan Task Manager atau perintah `tasklist`. Selain itu, Linux lebih transparan terhadap system call dan struktur kernel, sedangkan Windows menyembunyikan banyak proses sistem demi keamanan dan kemudahan pengguna.
 
 
 ---
 
 ## Kesimpulan
 Tuliskan 2–3 poin kesimpulan dari praktikum ini.
--Kernel Linux berperan penting dalam mengatur proses, mulai dari pembuatan hingga penghentian, agar sistem berjalan stabil dan efisien.
--Sistem multiuser Linux memungkinkan pengaturan hak akses yang berbeda untuk tiap pengguna demi keamanan dan kontrol sistem.
--Perintah dan system call pada Linux menunjukkan bagaimana interaksi antara user mode dan kernel mode terjadi dalam pengelolaan proses serta user.
 
 
 ---
 
-## Quiz
-1. Apa fungsi dari proses init atau systemd dalam sistem Linux?  
-   **Jawaban:**  init atau systemd berfungsi sebagai pengendali utama proses dan layanan di Linux, yang memastikan sistem dapat berjalan dan dikelola dengan benar sejak awal booting.
-2. Apa perbedaan antara kill dan killall?
-   **Jawaban:**
-   -kill digunakan jika kamu tahu PID proses yang ingin dihentikan.
-   -killall digunakan jika kamu tahu nama programnya, bukan PID-nya.
-   -kill menghentikan satu proses berdasarkan PID, sedangkan killall menghentikan semua proses dengan nama tertentu.
-4. Mengapa user root memiliki hak istimewa di sistem Linux? 
-   **Jawaban:**  User root memiliki hak istimewa karena berperan sebagai pengelola utama sistem Linux, yang bertanggung jawab atas pengaturan, keamanan, dan pemeliharaan seluruh sistem.
+## D. Tugas & Quiz
+### Tugas
+1. Dokumentasikan hasil semua perintah dan jelaskan fungsi tiap perintah.  
+2. Gambarkan hierarki proses dalam bentuk diagram pohon (`pstree`) di laporan.  
+3. Jelaskan hubungan antara user management dan keamanan sistem Linux.  
+4. Upload laporan ke repositori Git tepat waktu.
+
+### Quiz
+Tuliskan jawaban di bagian **Quiz** pada laporan:
+1. Apa fungsi dari proses `init` atau `systemd` dalam sistem Linux?  
+2. Apa perbedaan antara `kill` dan `killall`?  
+3. Mengapa user `root` memiliki hak istimewa di sistem Linux?
+
 
 ---
 
