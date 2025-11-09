@@ -182,7 +182,8 @@ Namun, SJF sulit diterapkan pada sistem nyata karena memerlukan perkiraan waktu 
 4. Simpan seluruh hasil dan analisis ke `laporan.md`. 
 
 **jawaban**
-1. 
+1. ![WhatsApp Image 2025-11-07 at 16 12 15](https://github.com/user-attachments/assets/604e8cd6-0d51-4b13-bbba-2b612086d8f3)
+
 
 
 
