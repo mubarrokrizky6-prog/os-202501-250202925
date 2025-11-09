@@ -182,19 +182,20 @@ Namun, SJF sulit diterapkan pada sistem nyata karena memerlukan perkiraan waktu 
 4. Simpan seluruh hasil dan analisis ke `laporan.md`. 
 
 **jawaban**
-1. ![WhatsApp Image 2025-11-07 at 16 12 15](https://github.com/user-attachments/assets/604e8cd6-0d51-4b13-bbba-2b612086d8f3)
+1.
+ ![WhatsApp Image 2025-11-07 at 16 12 15](https://github.com/user-attachments/assets/604e8cd6-0d51-4b13-bbba-2b612086d8f3)
 
 
 
 
-2. 
+3. 
 
    | Algoritma | Avg Waiting Time | Avg Turnaround Time | Kelebihan | Kekurangan |
    |------------|------------------|----------------------|------------|-------------|
    | FCFS | 8,75 | 14,75 | Sederhana dan mudah diterapkan | Tidak efisien untuk proses panjang |
    | SJF | 8,5 | 14,5 | Optimal untuk job pendek | Menyebabkan *starvation* pada job panjang |
 
-3. Berikut analisis kelebihan dan kelemahan tiap algoritma penjadwalan CPU:
+4. Berikut analisis kelebihan dan kelemahan tiap algoritma penjadwalan CPU:
 
 a. FCFS (First Come, First Served)
 
