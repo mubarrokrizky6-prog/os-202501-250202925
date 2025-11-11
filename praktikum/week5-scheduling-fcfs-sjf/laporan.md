@@ -287,8 +287,8 @@ Akibatnya, SJF tidak cocok digunakan pada sistem interaktif yang membutuhkan kea
 
 ## Refleksi Diri
 Tuliskan secara singkat:
-- Apa bagian yang paling menantang minggu ini?  
-- Bagaimana cara Anda mengatasinya?  
+- Apa bagian yang paling menantang minggu ini? tidak ada,lebih baik
+- Bagaimana cara Anda mengatasinya?  sabar,
 
 ---
 
