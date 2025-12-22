@@ -96,31 +96,135 @@ Ringkasan Teori Simulasi Algoritma Penjadwalan CPU:
 ---
 
 ## Analisis
-- Jelaskan makna hasil percobaan Simulasi Algoritma Penjadwalan CPU
+ a. Inisialisasi Dataset
 
- **Makna hasil percobaan Simulasi Algoritma Penjadwalan CPU adalah** menunjukkan bagaimana setiap algoritma penjadwalan memengaruhi kinerja sistem. Dari hasil    simulasi dapat diketahui perbedaan nilai waiting time, turnaround time, dan response time antar algoritma, sehingga terlihat algoritma mana yang lebih efisien, lebih adil, atau lebih cocok untuk kondisi beban tertentu. Hasil percobaan ini membantu memahami bahwa tidak ada satu algoritma yang paling baik untuk semua situasi, melainkan harus dipilih sesuai kebutuhan sistem.
- 
-- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).
+```processes = ["P1", "P2", "P3", "P4"]
+arrival_time = [0, 1, 2, 3]
+burst_time = [6, 8, 7, 3]
+```
 
-**- Fungsi Kernel**
-Kernel berperan sebagai inti sistem operasi yang mengatur penjadwalan CPU. Hasil simulasi menunjukkan bahwa keputusan kernel dalam memilih proses (berdasarkan algoritma penjadwalan) secara langsung memengaruhi waiting time dan turnaround time.
+Menyimpan nama proses, arrival time (AT), dan burst time (BT).
 
-**System Call**
-System call menjadi penghubung antara proses dan kernel. Saat proses meminta layanan CPU atau melakukan operasi I/O, system call memicu kernel untuk melakukan penjadwalan ulang, yang tercermin dalam hasil simulasi.
+Data sudah terurut berdasarkan waktu kedatangan → sesuai prinsip FCFS.
 
-**Arsitektur Sistem Operasi**
-Dalam arsitektur OS, modul penjadwalan CPU bekerja bersama manajemen proses dan sumber daya. Hasil simulasi menggambarkan bagaimana komponen-komponen tersebut saling berkoordinasi untuk mencapai efisiensi dan keadilan dalam penggunaan CPU.
-  
-- Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?
+ b. Inisialisasi Variabel
+```
+start_time = [0] * n
+finish_time = [0] * n
+waiting_time = [0] * n
+turnaround_time = [0] * n
+```
 
--Perbedaan hasil simulasi Algoritma Penjadwalan CPU di lingkungan OS yang berbeda (Linux dan Windows) umumnya terlihat pada cara penjadwalan diimplementasikan, meskipun konsep dasarnya sama.
--Algoritma Penjadwalan
-Linux menggunakan scheduler seperti Completely Fair Scheduler (CFS) yang menekankan keadilan waktu CPU, sedangkan Windows memakai priority-based preemptive scheduling. Akibatnya, pembagian waktu CPU dan respons proses bisa berbeda.
--Manajemen Prioritas
-Linux lebih fleksibel dalam pengaturan prioritas proses, sementara Windows memiliki kelas prioritas yang lebih ketat. Hal ini memengaruhi waiting time dan response time.
--Hasil Kinerja
-Dengan beban proses yang sama, Linux cenderung menghasilkan pembagian CPU yang lebih merata, sedangkan Windows lebih cepat merespons proses berprioritas tinggi.
+Digunakan untuk menyimpan:
+```
+start_time → waktu mulai eksekusi
 
+finish_time → waktu selesai eksekusi
+
+waiting_time → waktu menunggu
+
+turnaround_time → waktu total di sistem
+```
+ c. Proses Penjadwalan FCFS
+```
+for i in range(n):
+```
+
+Perulangan memproses setiap proses sesuai urutan kedatangan.
+
+ Proses pertama
+```
+start_time[i] = arrival_time[i]
+```
+
+Karena CPU masih kosong, proses langsung dieksekusi.
+
+ Proses berikutnya
+```
+start_time[i] = max(finish_time[i - 1], arrival_time[i])
+```
+
+Proses baru hanya bisa berjalan jika:
+
+CPU sudah kosong, atau
+
+proses sudah tiba
+
+ d. Perhitungan Waktu
+```
+finish_time[i] = start_time[i] + burst_time[i]
+waiting_time[i] = start_time[i] - arrival_time[i]
+turnaround_time[i] = finish_time[i] - arrival_time[i]
+```
+
+Rumus FCFS:
+```
+WT = Start Time − Arrival Time
+
+TAT = Finish Time − Arrival Time
+```
+ e. Perhitungan Rata-rata
+```
+avg_waiting_time = sum(waiting_time) / n
+avg_turnaround_time = sum(turnaround_time) / n
+```
+
+Digunakan untuk evaluasi performa algoritma.
+
+2️ Perbandingan Hasil Simulasi vs Perhitungan Manual
+Hasil Simulasi Program
+
+| Proses |  AT |  BT | Start | Finish |  WT | TAT |
+| :----: | :-: | :-: | :---: | :----: | :-: | :-: |
+|   P1   |  0  |  6  |   0   |    6   |  0  |  6  |
+|   P2   |  1  |  8  |   6   |   14   |  5  |  13 |
+|   P3   |  2  |  7  |   14  |   21   |  12 |  19 |
+|   P4   |  3  |  3  |   21  |   24   |  18 |  21 |
+
+
+Rata-rata Waiting Time = 8.75
+
+Rata-rata Turnaround Time = 14.75
+
+Hasil Perhitungan Manual
+
+Hasil manual (dari Gantt Chart FCFS):
+
+| P1 | P2 | P3 | P4 |
+0    6    14   21   24
+
+
+ Semua nilai WT dan TAT sama persis
+ Artinya simulasi tervalidasi dan benar
+
+3️ Kelebihan dan Keterbatasan Simulasi
+ Kelebihan
+
+Akurat dan konsisten
+Hasil simulasi sesuai dengan teori dan perhitungan manual.
+
+Otomatis dan efisien
+Menghindari kesalahan hitung saat jumlah proses banyak.
+
+Mudah dimodifikasi
+Dataset dapat diubah untuk eksperimen lain.
+
+Merepresentasikan konsep FCFS dengan jelas
+Cocok untuk pembelajaran dasar penjadwalan CPU.
+
+Keterbatasan
+
+Tidak mendukung preemptive scheduling
+Proses tidak bisa dipotong di tengah eksekusi.
+
+Tidak mempertimbangkan context switching
+Padahal di sistem nyata ada overhead waktu.
+
+Rentan Convoy Effect
+Proses panjang di awal membuat proses lain menunggu lama.
+
+Belum mencerminkan sistem operasi nyata sepenuhnya
+Kernel OS lebih kompleks (interrupt, I/O wait, multi-core).
 ---
 
 ## Kesimpulan
