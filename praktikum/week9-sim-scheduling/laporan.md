@@ -1,5 +1,5 @@
 
-# Laporan Praktikum Minggu [X]
+# Laporan Praktikum Minggu IX
 Topik: Simulasi Algoritma Penjadwalan CPU
 
 ---
