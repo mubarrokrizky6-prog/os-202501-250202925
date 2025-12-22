@@ -90,7 +90,7 @@ Ringkasan Teori Simulasi Algoritma Penjadwalan CPU:
 ## Hasil Eksekusi
 <img width="1919" height="1079" alt="Screenshot 2025-12-22 101046" src="https://github.com/user-attachments/assets/1849fed7-17e7-46fe-906d-12d99a997d5d" />
 
-<img width="1919" height="1079" alt="Screenshot 2025-12-22 101105" src="https://github.com/user-attachments/assets/6f93c8a1-be05-4422-8ee7-097ce1a3c586" />
+![HASIL SS](<screenshots/Screenshot 2025-12-22 101105.png>)
 
 
 ---
