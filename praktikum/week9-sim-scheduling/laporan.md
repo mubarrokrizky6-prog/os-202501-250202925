@@ -46,18 +46,49 @@ Ringkasan Teori Simulasi Algoritma Penjadwalan CPU:
 ---
 
 ## Kode / Perintah
-Tuliskan potongan kode atau perintah utama:
-```bash
-uname -a
-lsmod | head
-dmesg | head
-```
+1. **Menyiapkan Dataset**
+
+   Buat dataset proses minimal berisi:
+
+   | Proses | Arrival Time | Burst Time |
+   |:--:|:--:|:--:|
+   | P1 | 0 | 6 |
+   | P2 | 1 | 8 |
+   | P3 | 2 | 7 |
+   | P4 | 3 | 3 |
+
+2. **Implementasi Algoritma**
+
+   Program harus:
+   - Menghitung *waiting time* dan *turnaround time*.  
+   - Mendukung minimal **1 algoritma (FCFS atau SJF non-preemptive)**.  
+   - Menampilkan hasil dalam tabel.
+
+3. **Eksekusi & Validasi**
+
+   - Jalankan program menggunakan dataset uji.  
+   - Pastikan hasil sesuai dengan perhitungan manual minggu sebelumnya.  
+   - Simpan hasil eksekusi (screenshot).
+
+4. **Analisis**
+
+   - Jelaskan alur program.  
+   - Bandingkan hasil simulasi dengan perhitungan manual.  
+   - Jelaskan kelebihan dan keterbatasan simulasi.
+
+5. **Commit & Push**
+
+   ```bash
+   git add .
+   git commit -m "Minggu 9 - Simulasi Scheduling CPU"
+   git push origin main
+   ```
+
 
 ---
 
 ## Hasil Eksekusi
-Sertakan screenshot hasil percobaan atau diagram:
-![Screenshot hasil](screenshots/example.png)
+
 
 ---
 
