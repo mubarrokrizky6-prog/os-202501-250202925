@@ -12,9 +12,7 @@ Topik: Simulasi Algoritma Penjadwalan CPU
 ---
 
 ## Tujuan
-Tuliskan tujuan praktikum minggu ini.  
-Contoh:  
-> Setelah menyelesaikan tugas ini, mahasiswa mampu:
+
 
 Membuat program simulasi algoritma penjadwalan FCFS dan/atau SJF.
 Menjalankan program dengan dataset uji yang diberikan atau dibuat sendiri.
@@ -225,14 +223,16 @@ Proses panjang di awal membuat proses lain menunggu lama.
 
 Belum mencerminkan sistem operasi nyata sepenuhnya
 Kernel OS lebih kompleks (interrupt, I/O wait, multi-core).
+
 ---
 
 ## Kesimpulan
-Tuliskan 2–3 poin kesimpulan dari praktikum Simulasi Algoritma Penjadwalan CPU
 
-1. Setiap algoritma penjadwalan CPU memiliki kelebihan dan kekurangan yang memengaruhi nilai waiting time dan turnaround time.
-2. Simulasi memudahkan analisis dan perbandingan kinerja algoritma secara akurat dan efisien.
-3. Pemilihan algoritma penjadwalan harus disesuaikan dengan karakteristik beban proses dan tujuan sistem.
+Program simulasi algoritma penjadwalan FCFS (First Come First Served) berhasil diimplementasikan dan mampu menghitung waiting time serta turnaround time dengan benar berdasarkan dataset yang diberikan.
+
+Hasil simulasi menunjukkan nilai yang sesuai dengan perhitungan manual, sehingga dapat disimpulkan bahwa algoritma dan implementasi program telah berjalan dengan benar dan tervalidasi.
+
+Algoritma FCFS mudah dipahami dan diimplementasikan, namun memiliki keterbatasan seperti convoy effect dan kurang optimal untuk sistem dengan beban proses yang bervariasi, sehingga perlu dibandingkan dengan algoritma lain pada studi lanjutan.
 
 
 ---
