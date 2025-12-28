@@ -143,8 +143,8 @@ Membiarkan deadlock terjadi terlebih dahulu, lalu mendeteksinya dan menanganinya
 
 ## Refleksi Diri
 Tuliskan secara singkat:
-- Apa bagian yang paling menantang minggu ini?  
-- Bagaimana cara Anda mengatasinya?  
+- Apa bagian yang paling menantang minggu ini?  Tidak ada mungkin
+- Bagaimana cara Anda mengatasinya?  Berusaha
 
 ---
 
