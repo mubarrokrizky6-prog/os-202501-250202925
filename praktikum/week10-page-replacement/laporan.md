@@ -39,6 +39,7 @@ Ringkasan Teori Manajemen Memori – Page Replacement (FIFO & LRU):
 ---
 
 ## Kode / Perintah
+```
 # Reference string dan jumlah frame
 reference_string = [7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2]
 frames_count = 3
@@ -95,7 +96,7 @@ def lru_page_replacement(ref_string, frames_count):
 # ================= Main =================
 fifo_page_replacement(reference_string, frames_count)
 lru_page_replacement(reference_string, frames_count)
-
+```
 ---
 
 ## Hasil Eksekusi
