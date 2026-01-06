@@ -12,10 +12,6 @@ Topik: Manajemen Memori – Page Replacement (FIFO & LRU)
 ---
 
 ## Tujuan
-Tuliskan tujuan praktikum minggu ini.  
-Contoh:  
-Setelah menyelesaikan tugas ini, mahasiswa mampu:
-
 -Mengimplementasikan algoritma page replacement FIFO dalam program.
 -Mengimplementasikan algoritma page replacement LRU dalam program.
 -Menjalankan simulasi page replacement dengan dataset tertentu.
@@ -25,8 +21,6 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
 ---
 
 ## Dasar Teori
-Tuliskan ringkasan teori (3–5 poin) yang mendasari percobaan Manajemen Memori – Page Replacement (FIFO & LRU)
-
 Ringkasan Teori Manajemen Memori – Page Replacement (FIFO & LRU):
 -Manajemen memori bertujuan mengatur penggunaan memori utama agar proses dapat berjalan secara efisien.
 -Page replacement digunakan ketika terjadi page fault dan memori fisik sudah penuh.
@@ -45,57 +39,114 @@ Ringkasan Teori Manajemen Memori – Page Replacement (FIFO & LRU):
 ---
 
 ## Kode / Perintah
-Tuliskan potongan kode atau perintah utama:
-```bash
-uname -a
-lsmod | head
-dmesg | head
-```
+# Reference string dan jumlah frame
+reference_string = [7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2]
+frames_count = 3
+
+
+# ================= FIFO =================
+def fifo_page_replacement(ref_string, frames_count):
+    frames = []
+    page_faults = 0
+
+    print("=== FIFO Page Replacement ===")
+
+    for page in ref_string:
+        if page in frames:
+            print(f"Page {page} -> HIT  | Frames: {frames}")
+        else:
+            page_faults += 1
+            if len(frames) < frames_count:
+                frames.append(page)
+            else:
+                frames.pop(0)      # Hapus halaman paling awal
+                frames.append(page)
+            print(f"Page {page} -> FAULT| Frames: {frames}")
+
+    print(f"\nTotal Page Fault (FIFO): {page_faults}")
+    print("-" * 40)
+
+
+# ================= LRU =================
+def lru_page_replacement(ref_string, frames_count):
+    frames = []
+    page_faults = 0
+
+    print("=== LRU Page Replacement ===")
+
+    for page in ref_string:
+        if page in frames:
+            frames.remove(page)    # Update urutan penggunaan
+            frames.append(page)
+            print(f"Page {page} -> HIT  | Frames: {frames}")
+        else:
+            page_faults += 1
+            if len(frames) < frames_count:
+                frames.append(page)
+            else:
+                frames.pop(0)      # Hapus halaman paling lama digunakan
+                frames.append(page)
+            print(f"Page {page} -> FAULT| Frames: {frames}")
+
+    print(f"\nTotal Page Fault (LRU): {page_faults}")
+    print("-" * 40)
+
+
+# ================= Main =================
+fifo_page_replacement(reference_string, frames_count)
+lru_page_replacement(reference_string, frames_count)
 
 ---
 
 ## Hasil Eksekusi
-Sertakan screenshot hasil percobaan atau diagram:
-![Screenshot hasil](screenshots/example.png)
+
+<img width="1541" height="909" alt="Screenshot 2026-01-06 123223" src="https://github.com/user-attachments/assets/6c6354aa-d703-409c-851e-37deb4d80f9a" />
+
+<img width="1264" height="815" alt="Screenshot 2026-01-06 123243" src="https://github.com/user-attachments/assets/069ab3d2-30a5-416c-8c33-8c1e85974729" />
 
 ---
 
 ## Analisis
-**- Jelaskan makna hasil percobaan  Manajemen Memori – Page Replacement (FIFO & LRU)**
- Hasil percobaan menunjukkan bahwa pemilihan algoritma page replacement sangat memengaruhi kinerja memori sistem.
- Algoritma FIFO cenderung menghasilkan jumlah page fault lebih banyak karena hanya berdasarkan urutan masuk halaman.
- Algoritma LRU lebih efisien karena mempertimbangkan riwayat penggunaan halaman.
- Semakin sedikit page fault yang terjadi, semakin baik kinerja manajemen memori sistem.
+5. **Analisis Perbandingan**
 
-**- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).**
-1. Fungsi Kernel
-Kernel bertanggung jawab mengelola memori utama, termasuk menangani page fault dan menentukan halaman mana yang harus diganti. Hasil percobaan FIFO dan LRU mencerminkan keputusan kernel dalam memilih halaman yang dikeluarkan dari memori, yang berdampak langsung pada jumlah page fault.
+   Buat tabel perbandingan seperti berikut:
 
-2. System Call
-Ketika proses mengakses halaman yang tidak ada di memori, terjadi page fault yang menyebabkan proses berinteraksi dengan kernel melalui mekanisme system call. Kernel kemudian memuat halaman dari penyimpanan sekunder dan menerapkan algoritma page replacement yang sesuai.
+| Algoritma | Jumlah Page Fault | Keterangan                                                                                              |
+| :-------- | :---------------: | :------------------------------------------------------------------------------------------------------ |
+| **FIFO**  |       **10**      | Mengganti halaman berdasarkan urutan masuk pertama tanpa memperhatikan frekuensi atau waktu penggunaan. |
+| **LRU**   |       **9**       | Mengganti halaman yang paling lama tidak digunakan sehingga lebih sesuai dengan pola akses program.     |
 
-3. Arsitektur Sistem Operasi
-Dalam arsitektur OS, manajemen memori merupakan bagian inti yang bekerja bersama CPU dan penyimpanan sekunder. Hasil percobaan FIFO dan LRU menunjukkan bagaimana modul manajemen memori dalam kernel berperan menjaga efisiensi penggunaan memori dan kinerja sistem secara keseluruhan.
+
+   - Jelaskan mengapa jumlah *page fault* bisa berbeda.
+
+Perbedaan jumlah page fault terjadi karena strategi pemilihan halaman yang diganti berbeda:
+
+FIFO tidak mempertimbangkan apakah halaman masih sering digunakan atau tidak, sehingga halaman penting bisa terhapus meskipun akan segera dipakai kembali.
+
+LRU mempertimbangkan riwayat penggunaan halaman, sehingga halaman yang sering diakses akan dipertahankan lebih lama di memori.
+
+Pola reference string memiliki locality of reference, yang lebih cocok ditangani oleh algoritma LRU dibanding FIFO.
   
-**- Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?**  
+   - Analisis algoritma mana yang lebih efisien dan alasannya.
 
-Algoritma yang digunakan
-Linux umumnya menggunakan pendekatan berbasis LRU (atau mendekatinya), sehingga jumlah page fault relatif lebih sedikit. Windows juga menggunakan algoritma berbasis LRU, tetapi dengan modifikasi dan penyesuaian internal.
+Algoritma yang lebih efisien:  LRU
 
-Manajemen memori internal
-Linux lebih fleksibel dalam pengaturan cache dan buffer, sedangkan Windows memiliki mekanisme manajemen memori yang lebih terstruktur dan berbasis prioritas proses. Hal ini dapat memengaruhi frekuensi page fault.
+Alasannya:
 
-Hasil kinerja
-Pada beban dan pola akses yang sama, Linux cenderung lebih efisien dalam penggunaan memori, sementara Windows lebih fokus pada stabilitas dan respons aplikasi.
+LRU menghasilkan jumlah page fault lebih sedikit dibanding FIFO pada simulasi ini.
+
+LRU menyesuaikan penggantian halaman dengan perilaku aktual program.
+
+FIFO berpotensi mengalami Belady’s Anomaly, sedangkan LRU tidak.
 
 ---
 
 ## Kesimpulan
-Tuliskan 2–3 poin kesimpulan dari praktikum Manajemen Memori – Page Replacement (FIFO & LRU)
+Berdasarkan hasil praktikum manajemen memori dengan algoritma page replacement FIFO dan LRU, dapat disimpulkan bahwa kedua algoritma berhasil diimplementasikan dan dijalankan sesuai dengan dataset yang diberikan. Hasil simulasi menunjukkan bahwa algoritma FIFO menghasilkan 10 page fault, sedangkan algoritma LRU menghasilkan 9 page fault.
 
--Algoritma FIFO lebih sederhana tetapi cenderung menghasilkan page fault lebih banyak.
--Algoritma LRU lebih efisien karena mempertimbangkan pola akses halaman.
--Pemilihan algoritma page replacement berpengaruh langsung terhadap kinerja manajemen memori sistem.
+Perbedaan jumlah page fault tersebut terjadi karena FIFO tidak mempertimbangkan riwayat penggunaan halaman, sehingga dapat mengganti halaman yang masih sering digunakan. Sebaliknya, LRU mempertimbangkan pola akses halaman dengan mempertahankan halaman yang baru saja digunakan, sehingga lebih efisien dalam menangani locality of reference.
+
+Dengan demikian, algoritma LRU lebih efisien dibanding FIFO pada simulasi ini karena mampu mengurangi jumlah page fault dan memanfaatkan memori secara lebih optimal. Pemilihan algoritma page replacement yang tepat sangat berpengaruh terhadap kinerja sistem operasi dalam mengelola memori utama.
 
 **Tugas**
 Buat program simulasi page replacement FIFO dan LRU.
