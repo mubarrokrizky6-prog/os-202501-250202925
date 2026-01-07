@@ -1,25 +1,30 @@
 
-# Laporan Praktikum Minggu [X]
-Topik: [Tuliskan judul topik, misalnya "Arsitektur Sistem Operasi dan Kernel"]
+# Laporan Praktikum Minggu 12
+Topik: Virtualisasi Menggunakan Virtual Machine
 
 ---
 
 ## Identitas
-- **Nama**  : [Nama Mahasiswa]  
-- **NIM**   : [NIM Mahasiswa]  
-- **Kelas** : [Kelas]
+- **Nama**  : RIZKI FADIL MUABAROK 
+- **NIM**   : 250202925
+- **Kelas** : 1IKRA
 
 ---
 
-## Tujuan
-Tuliskan tujuan praktikum minggu ini.  
-Contoh:  
-> Mahasiswa mampu menjelaskan fungsi utama sistem operasi dan peran kernel serta system call.
+## Tujuan  
+> Setelah menyelesaikan tugas ini, mahasiswa mampu:
+
+Menginstal perangkat lunak virtualisasi (VirtualBox/VMware).
+Membuat dan menjalankan sistem operasi guest di dalam VM.
+Mengatur konfigurasi resource VM (CPU, RAM, storage).
+Menjelaskan mekanisme proteksi OS melalui virtualisasi.
+Menyusun laporan praktikum instalasi dan konfigurasi VM secara sistematis.
 
 ---
 
 ## Dasar Teori
-Tuliskan ringkasan teori (3–5 poin) yang mendasari percobaan.
+Tuliskan ringkasan teori (3–5 poin) yang mendasari percobaan Virtualisasi Menggunakan Virtual Machine
+
 
 ---
 
@@ -48,23 +53,31 @@ Sertakan screenshot hasil percobaan atau diagram:
 ---
 
 ## Analisis
-- Jelaskan makna hasil percobaan.  
+- Jelaskan makna hasil percobaan Virtualisasi Menggunakan Virtual Machine
+  
 - Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).  
 - Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?  
 
 ---
 
 ## Kesimpulan
-Tuliskan 2–3 poin kesimpulan dari praktikum ini.
+Tuliskan 2–3 poin kesimpulan dari praktikum Virtualisasi Menggunakan Virtual Machine
+
 
 ---
+**##Tugas**
+1. Instal dan jalankan OS guest menggunakan VM.
+2. Konfigurasikan resource VM sesuai instruksi.
+3. Dokumentasikan proses instalasi dan konfigurasi.
+4. Tulis laporan praktikum pada laporan.md.
+
 
 ## Quiz
-1. [Pertanyaan 1]  
+1. Apa perbedaan antara host OS dan guest OS? 
    **Jawaban:**  
-2. [Pertanyaan 2]  
+2. Apa peran hypervisor dalam virtualisasi?
    **Jawaban:**  
-3. [Pertanyaan 3]  
+3. Mengapa virtualisasi meningkatkan keamanan sistem? 
    **Jawaban:**  
 
 ---
