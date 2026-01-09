@@ -25,6 +25,12 @@ Menyusun laporan praktikum instalasi dan konfigurasi VM secara sistematis.
 ## Dasar Teori
 Tuliskan ringkasan teori (3–5 poin) yang mendasari percobaan Virtualisasi Menggunakan Virtual Machine
 
+a. Virtualisasi adalah teknik yang memungkinkan satu perangkat keras fisik menjalankan beberapa sistem operasi secara bersamaan dengan bantuan hypervisor.
+b. Hypervisor berfungsi sebagai lapisan pengelola yang mengatur akses Guest OS ke sumber daya hardware serta menjaga isolasi antar mesin virtual.
+c. Mesin virtual (Virtual Machine) bertindak sebagai komputer virtual yang memiliki CPU, memori, dan storage virtual sendiri.
+d. Konsep isolasi dalam virtualisasi meningkatkan keamanan dan stabilitas sistem karena gangguan pada satu VM tidak memengaruhi sistem lain.
+e. Virtualisasi meningkatkan efisiensi penggunaan hardware dan memudahkan pengujian, pengembangan, serta pembelajaran sistem operasi.
+
 
 ---
 
@@ -54,14 +60,16 @@ Sertakan screenshot hasil percobaan atau diagram:
 
 ## Analisis
 - Jelaskan makna hasil percobaan Virtualisasi Menggunakan Virtual Machine
-  
-- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).  
+  - Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).  
 - Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?  
 
 ---
 
 ## Kesimpulan
-Tuliskan 2–3 poin kesimpulan dari praktikum Virtualisasi Menggunakan Virtual Machine
+ Kesimpulan Praktikum Virtualisasi Menggunakan Virtual Machine:
+-Virtualisasi memungkinkan menjalankan beberapa sistem operasi secara bersamaan pada satu perangkat keras tanpa saling mengganggu karena adanya isolasi antar mesin virtual.
+-Hypervisor berperan penting dalam mengelola dan membagi sumber daya hardware (CPU, RAM, dan storage) secara efisien kepada setiap mesin virtual.
+-Penggunaan virtual machine meningkatkan keamanan dan fleksibilitas sistem, karena memudahkan pengujian, pemulihan (snapshot), dan pengelolaan sistem operasi tanpa memengaruhi sistem utama.
 
 
 ---
@@ -74,18 +82,36 @@ Tuliskan 2–3 poin kesimpulan dari praktikum Virtualisasi Menggunakan Virtual M
 
 ## Quiz
 1. Apa perbedaan antara host OS dan guest OS? 
-   **Jawaban:**  
+   **Jawaban:**
+ 1. Host OS
+-Sistem operasi utama yang terpasang langsung pada perangkat keras (hardware).
+-Mengelola sumber daya fisik seperti CPU, RAM, hard disk, dan perangkat I/O.
+-Menjadi lingkungan induk tempat software virtualisasi dijalankan.
+
+2. Guest OS
+-Sistem operasi tamu yang dijalankan di dalam mesin virtual (virtual machine).
+-Tidak berinteraksi langsung dengan hardware, tetapi melalui host OS atau hypervisor.
+-Menggunakan sumber daya yang dialokasikan oleh host OS.
+-Contoh: Linux Ubuntu yang dijalankan di VirtualBox pada Windows.
+
 2. Apa peran hypervisor dalam virtualisasi?
-   **Jawaban:**  
+   **Jawaban:**
+a.  Mengelola sumber daya hardware
+b.  Menjadi perantara antara hardware dan Guest OS
+c.  Menjaga isolasi antar mesin virtual
+d.  Mengatur siklus hidup mesin virtual
+e.  Meningkatkan keamanan dan stabilitas sistem
+ 
 3. Mengapa virtualisasi meningkatkan keamanan sistem? 
-   **Jawaban:**  
+   **Jawaban:**
+   Virtualisasi meningkatkan keamanan karena mengisolasi sistem, membatasi akses hardware, dan memudahkan pemulihan, sehingga risiko dan dampak serangan dapat        diminimalkan.
 
 ---
 
 ## Refleksi Diri
 Tuliskan secara singkat:
-- Apa bagian yang paling menantang minggu ini?  
-- Bagaimana cara Anda mengatasinya?  
+- Apa bagian yang paling menantang minggu ini? Banyak ujian, cobaan, dan tantangan  
+- Bagaimana cara Anda mengatasinya?  berusaha dan berdoa
 
 ---
 
