@@ -75,6 +75,10 @@ Sertakan screenshot hasil percobaan atau diagram:
 ## Kesimpulan
 Tuliskan 2–3 poin kesimpulan dari praktikum  Menyusunan Laporan Praktikum Format IMRAD
 
+-Format IMRAD membantu menyusun laporan praktikum secara sistematis, runtut, dan sesuai standar penulisan ilmiah.
+-Pemisahan bagian Introduction, Methods, Results, dan Discussion meningkatkan kejelasan penyajian data serta objektivitas analisis.
+-Penerapan format IMRAD memudahkan evaluasi laporan dan meningkatkan kualitas penulisan ilmiah mahasiswa.
+
 ---
 
 ## Quiz
@@ -119,8 +123,8 @@ Praktikum bukan hanya soal eksperimen, tetapi juga membiasakan mahasiswa menulis
 
 ## Refleksi Diri
 Tuliskan secara singkat:
-- Apa bagian yang paling menantang minggu ini?  
-- Bagaimana cara Anda mengatasinya?  
+- Apa bagian yang paling menantang minggu ini?  Belum saya kerjakan semua tugas kelompok SO, mereka selalu ada aja alasan nya...
+- Bagaimana cara Anda mengatasinya? saya kerjakan sendiri semampu saya
 
 ---
 
