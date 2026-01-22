@@ -24,19 +24,15 @@ Setelah menyelesaikan proyek ini, mahasiswa mampu:
 
 ## Dasar Teori
 Tuliskan ringkasan teori (3–5 poin) yang mendasari percobaan Mini Simulasi Sistem Operasi (Scheduling + Memory + Container)
-## CPU Scheduling
+1. CPU Scheduling
 Menentukan urutan proses agar penggunaan CPU efisien.
-
-## Algoritma Penjadwalan
+2. Algoritma Penjadwalan
 FCFS, SJF, dan Round Robin memengaruhi waktu tunggu dan respons proses.
-
-## Manajemen Memori
+3. Manajemen Memori
 Mengatur alokasi memori agar proses berjalan stabil.
-
-## Container
+4. Container
 Menjalankan proses secara terisolasi dengan berbagi kernel host.
-
-## Pembatasan Sumber Daya
+5. Pembatasan Sumber Daya
 CPU dan memori dibatasi agar tidak terjadi monopoli proses.
 
 
@@ -78,7 +74,8 @@ Tuliskan 2–3 poin kesimpulan dari praktikum Mini Simulasi Sistem Operasi (Sche
 -Penjadwalan CPU memengaruhi kinerja sistem, terutama waktu tunggu dan keadilan antar proses.
 -Manajemen memori dan container memungkinkan proses berjalan stabil melalui isolasi dan pembatasan sumber daya.
 -Integrasi scheduling, memori, dan container meningkatkan efisiensi serta mencegah konflik penggunaan sumber daya.
----
+
+
 
 ## Quiz
 1. [Pertanyaan 1]  
