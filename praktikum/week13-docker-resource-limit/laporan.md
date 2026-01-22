@@ -106,6 +106,10 @@ Tuliskan 2–3 poin kesimpulan dari praktikum Docker – Resource Limit (CPU & M
 
 ---
 ## Tugas
+-Buat Dockerfile sederhana dan program uji di folder code/.
+-Build image dan jalankan container tanpa limit.
+-Jalankan container dengan limit CPU dan memori.
+-Sajikan hasil pengamatan dalam tabel/uraian singkat di laporan.md.
 
 ## Quiz
 1. Mengapa container perlu dibatasi CPU dan memori?
