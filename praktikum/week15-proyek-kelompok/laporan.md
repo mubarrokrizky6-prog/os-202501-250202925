@@ -1,25 +1,44 @@
 
 # Laporan Praktikum Minggu [X]
-Topik: [Tuliskan judul topik, misalnya "Arsitektur Sistem Operasi dan Kernel"]
+Topik: Mini Simulasi Sistem Operasi (Scheduling + Memory + Container)
 
 ---
 
 ## Identitas
-- **Nama**  : [Nama Mahasiswa]  
-- **NIM**   : [NIM Mahasiswa]  
-- **Kelas** : [Kelas]
+- **Nama**  : RIZKI FADIL MUBAROK  
+- **NIM**   : 250202925 
+- **Kelas** : 1IKRA
 
 ---
 
 ## Tujuan
-Tuliskan tujuan praktikum minggu ini.  
-Contoh:  
-> Mahasiswa mampu menjelaskan fungsi utama sistem operasi dan peran kernel serta system call.
+Setelah menyelesaikan proyek ini, mahasiswa mampu:
+
+-Bekerja kolaboratif dalam tim dengan pembagian peran yang jelas.
+-Mengintegrasikan beberapa konsep sistem operasi dalam satu aplikasi sederhana.
+-Mengelola proyek menggunakan Git (branch/PR/commit yang rapi).
+-Menyusun dokumentasi dan laporan proyek yang sistematis.
+-Melakukan presentasi dan demo hasil proyek.
 
 ---
 
 ## Dasar Teori
-Tuliskan ringkasan teori (3–5 poin) yang mendasari percobaan.
+Tuliskan ringkasan teori (3–5 poin) yang mendasari percobaan Mini Simulasi Sistem Operasi (Scheduling + Memory + Container)
+## CPU Scheduling
+Menentukan urutan proses agar penggunaan CPU efisien.
+
+## Algoritma Penjadwalan
+FCFS, SJF, dan Round Robin memengaruhi waktu tunggu dan respons proses.
+
+## Manajemen Memori
+Mengatur alokasi memori agar proses berjalan stabil.
+
+## Container
+Menjalankan proses secara terisolasi dengan berbagi kernel host.
+
+## Pembatasan Sumber Daya
+CPU dan memori dibatasi agar tidak terjadi monopoli proses.
+
 
 ---
 
@@ -55,8 +74,10 @@ Sertakan screenshot hasil percobaan atau diagram:
 ---
 
 ## Kesimpulan
-Tuliskan 2–3 poin kesimpulan dari praktikum ini.
-
+Tuliskan 2–3 poin kesimpulan dari praktikum Mini Simulasi Sistem Operasi (Scheduling + Memory + Container)
+-Penjadwalan CPU memengaruhi kinerja sistem, terutama waktu tunggu dan keadilan antar proses.
+-Manajemen memori dan container memungkinkan proses berjalan stabil melalui isolasi dan pembatasan sumber daya.
+-Integrasi scheduling, memori, dan container meningkatkan efisiensi serta mencegah konflik penggunaan sumber daya.
 ---
 
 ## Quiz
