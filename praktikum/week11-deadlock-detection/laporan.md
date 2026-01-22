@@ -61,6 +61,9 @@ dmesg | head
 ## Hasil Eksekusi
 Sertakan screenshot hasil percobaan atau diagram:
 ![Screenshot hasil](screenshots/example.png)
+<img width="1919" height="1079" alt="Screenshot 2026-01-22 103650" src="https://github.com/user-attachments/assets/613f084a-48e8-420a-9f77-8236068011f5" />
+<img width="1919" height="1079" alt="Screenshot 2026-01-22 103712" src="https://github.com/user-attachments/assets/8e7a5b70-9416-488a-93b8-073799595061" />
+<img width="1919" height="1079" alt="Screenshot 2026-01-22 103727" src="https://github.com/user-attachments/assets/7212c155-e82d-4cf0-9f91-acca50e590b2" />
 
 ---
 
@@ -106,6 +109,27 @@ Tuliskan 2–3 poin kesimpulan dari praktikum Simulasi dan Deteksi Deadlock
 2. Jalankan program dengan dataset uji.
 3. Sajikan hasil analisis dalam tabel dan narasi.
 4. Tulis laporan praktikum pada laporan.md.
+
+ ## Analisis Deadlock
+ | Proses | Resource Dialokasikan | Resource Diminta | Status   |
+| ------ | --------------------- | ---------------- | -------- |
+| P1     | R1                    | R2               | Deadlock |
+| P2     | R2                    | R3               | Deadlock |
+| P3     | R3                    | R1               | Deadlock |
+
+
+Berdasarkan dataset, setiap proses memegang satu resource dan menunggu resource lain
+yang sedang digunakan oleh proses lain.
+
+Tidak ada proses yang dapat melanjutkan eksekusi karena saling menunggu.
+Kondisi ini menyebabkan deadlock.
+
+Deadlock terjadi karena memenuhi empat kondisi deadlock:
+1. Mutual exclusion
+2. Hold and wait
+3. No preemption
+4. Circular wait
+
 
    
 ## Quiz
