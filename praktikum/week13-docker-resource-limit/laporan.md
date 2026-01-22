@@ -42,18 +42,69 @@ c. Pengaturan resource limit meningkatkan stabilitas dan keandalan sistem dalam 
 ---
 
 ## Kode / Perintah
-Tuliskan potongan kode atau perintah utama:
-```bash
-uname -a
-lsmod | head
-dmesg | head
+app.py
+```
+import time
+
+data = []
+
+print("=== UJI RESOURCE LIMIT DOCKER ===")
+
+try:
+    i = 0
+    while True:
+        i += 1
+
+        # Bebani CPU
+        x = i * i * i
+
+        # Alokasi memori bertahap (1 MB)
+        data.append("X" * 1024 * 1024)
+
+        print(f"Iterasi: {i} | Memori terpakai: {len(data)} MB")
+        time.sleep(0.1)
+
+except MemoryError:
+    print("ERROR: Memori tidak mencukupi!")
+
+except Exception as e:
+    print("Program dihentikan:", e)
+```
+dockerfile
+```
+FROM python:3.10-slim
+
+WORKDIR /app
+
+COPY app.py .
+
+CMD ["python", "app.py"]
+```
+membuat dockerfile build 
+```
+docker build -t week13-resource-limit .
+```
+menjalankan container tanpa limir
+``` 
+docker run --rm week13-resource-limit .
+```
+menjalankan container dengan limit
+```
+docker run --rm --cpus="0.5" --memory="256m" week13-resource-limit
 ```
 
 ---
 
 ## Hasil Eksekusi
-Sertakan screenshot hasil percobaan atau diagram:
-![Screenshot hasil](screenshots/example.png)
+
+build
+![Hasil](<screenshots/build container.png>)
+tanpa limit
+![Hasil](<screenshots/tanpa limit.png>)
+dengan limit
+![Hasil](<screenshots/dengan limit.png>)
+monitoring sederhana
+![Hasil](<screenshots/monitoring sederhana.PNG>)
 
 ---
 
