@@ -1,5 +1,5 @@
 # Tugas Praktikum Minggu 15  
-Topik: Proyek Kelompok – Mini Simulasi Sistem Operasi (Scheduling + Memory + Container)
+Topik: Proyek Kelompok – Mini Simulasi Sistem Operasi (Scheduling + Memory + Container) 
 ## Nama kelompok
 - RIZKI FADIL MUBAROK (250202925)
 - RIZAL PRASETYO (250202917)
