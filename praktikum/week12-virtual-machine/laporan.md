@@ -1,6 +1,6 @@
 
 # Laporan Praktikum Minggu 12
-Topik: Virtualisasi Menggunakan Virtual Machine
+Topik: Virtualisasi Menggunakan Virtual Machine 
 
 ---
 
