@@ -1,0 +1,46 @@
+def load_pages(file):
+    with open(file) as f:
+        return list(map(int, f.read().split()))
+
+def fifo(file, frame_size):
+    pages = load_pages(file)
+    frame = []
+    fault = 0
+
+    for p in pages:
+        if p not in frame:
+            fault += 1
+            if len(frame) < frame_size:
+                frame.append(p)
+            else:
+                frame.pop(0)
+                frame.append(p)    
+
+    hit = len(pages) - fault
+    print("\nFIFO Page Replacement")
+    print(f"Page Fault : {fault}")
+    print(f"Hit Ratio  : {hit / len(pages):.2f}")
+
+def lru(file, frame_size):
+    pages = load_pages(file)
+    frame = []
+    recent = []
+    fault = 0
+
+    for p in pages:
+        if p not in frame:
+            fault += 1
+            if len(frame) < frame_size:
+                frame.append(p)
+            else:
+                lru_page = recent.pop(0)
+                frame[frame.index(lru_page)] = p
+        else:
+            recent.remove(p)
+        recent.append(p)
+
+    hit = len(pages) - fault
+    print("\nLRU Page Replacement")
+    print(f"Page Fault : {fault}")
+    print(f"Hit Ratio  : {hit / len(pages):.2f}")
+ 
