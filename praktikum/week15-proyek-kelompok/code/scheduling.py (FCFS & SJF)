@@ -1,0 +1,56 @@
+import csv
+
+def load_cpu_data(file):
+    processes = []
+    with open(file) as f:
+        reader = csv.reader(f)
+        for row in reader:
+            processes.append({
+                "pid": row[0],
+                "arrival": int(row[1]),
+                "burst": int(row[2])
+            })
+    return processes
+
+def fcfs(file):
+    data = load_cpu_data(file)
+    time = 0
+    total_wt = total_tat = 0
+
+    print("\nFCFS Scheduling")
+    print("PID\tWT\tTAT")
+
+    for p in data:
+        wt = max(0, time - p["arrival"])
+        tat = wt + p["burst"]
+        time += p["burst"]
+
+        total_wt += wt
+        total_tat += tat
+        print(f"{p['pid']}\t{wt}\t{tat}")
+
+    n = len(data)
+    print(f"Rata-rata WT  : {total_wt / n:.2f}")
+    print(f"Rata-rata TAT : {total_tat / n:.2f}")
+
+def sjf(file):
+    data = load_cpu_data(file)
+    data.sort(key=lambda x: x["burst"])
+
+    time = total_wt = total_tat = 0
+
+    print("\nSJF Scheduling")
+    print("PID\tWT\tTAT")
+
+    for p in data:
+        wt = time
+        tat = wt + p["burst"]
+        time += p["burst"]
+
+        total_wt += wt
+        total_tat += tat
+        print(f"{p['pid']}\t{wt}\t{tat}")
+
+    n = len(data)
+    print(f"Rata-rata WT  : {total_wt / n:.2f}")
+    print(f"Rata-rata TAT : {total_tat / n:.2f}")
