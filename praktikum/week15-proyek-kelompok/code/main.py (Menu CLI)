@@ -1,0 +1,30 @@
+from scheduling import fcfs, sjf
+from pagerepl import fifo, lru
+
+def main():
+    print("=== MINI SIMULASI SISTEM OPERASI ===")
+    print("1. CPU Scheduling")
+    print("2. Page Replacement")
+    pilihan = input("Pilih modul (1/2): ")
+
+    if pilihan == "1":
+        print("\n1. FCFS")
+        print("2. SJF")
+        algo = input("Pilih algoritma (1/2): ")
+        if algo == "1":
+            fcfs("data/cpu.csv")
+        elif algo == "2":
+            sjf("data/cpu.csv")
+
+    elif pilihan == "2":
+        frame = int(input("Masukkan jumlah frame: "))
+        print("\n1. FIFO")
+        print("2. LRU")
+        algo = input("Pilih algoritma (1/2): ")
+        if algo == "1":
+            fifo("data/page.txt", frame)
+        elif algo == "2":
+            lru("data/page.txt", frame)
+
+if __name__ == "__main__":
+    main()
